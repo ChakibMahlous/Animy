@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "642499297039",
+    "project_id": "infinity-e9a88",
+    "storage_bucket": "infinity-e9a88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642499297039:android:6b14dba323d5c1cd1bc87a",
+        "android_client_info": {
+          "package_name": "com.example.infinity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJQ6P2eUDHw8oFSmkIyAnQ4BR2gR2AJT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
