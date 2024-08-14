@@ -2,5 +2,7 @@
     <string name="app_name">ANIMY</string>
     <string name="login">if you have an account <b><u>Log in</u></b></string>
     <string name="forget">forget password ! <b><u>Change It</u></b></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

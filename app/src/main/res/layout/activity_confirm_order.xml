@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.ConfirmOrderActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="764dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/back4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="24sp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_weight="1"
+                android:text="Confirm Order"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="700dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14sp"
+                    android:layout_marginTop="14sp"
+                    android:layout_marginEnd="14sp"
+                    android:background="@drawable/shape_background"
+                    android:ems="10"
+                    android:hint="Full Name"
+                    android:inputType="text"
+                    android:padding="16dp" />
+
+                <EditText
+                    android:id="@+id/phone_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14sp"
+                    android:layout_marginTop="14sp"
+                    android:layout_marginEnd="14sp"
+                    android:background="@drawable/shape_background"
+                    android:ems="10"
+                    android:hint="Phone Number"
+                    android:inputType="text"
+                    android:padding="16dp" />
+
+                <TextView
+                    android:id="@+id/wilaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14sp"
+                    android:layout_marginTop="14sp"
+                    android:layout_marginEnd="14sp"
+                    android:background="@drawable/shape_background"
+                    android:ems="10"
+                    android:hint="Wilaya"
+                    android:inputType="text"
+                    android:padding="14dp"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/commune"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14sp"
+                    android:layout_marginTop="14sp"
+                    android:layout_marginEnd="14sp"
+                    android:background="@drawable/shape_background"
+                    android:ems="10"
+                    android:hint="Commune"
+                    android:inputType="text"
+                    android:padding="16dp" />
+
+                <EditText
+                    android:id="@+id/Adress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14sp"
+                    android:layout_marginTop="14sp"
+                    android:layout_marginEnd="14sp"
+                    android:background="@drawable/shape_background"
+                    android:ems="10"
+                    android:hint="Adress"
+                    android:inputType="text"
+                    android:padding="16dp" />
+
+                <TextView
+                    android:id="@+id/shipping_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14sp"
+                    android:layout_marginTop="14sp"
+                    android:layout_marginEnd="14sp"
+                    android:background="@drawable/shape_background"
+                    android:ems="10"
+                    android:hint="Type Of Shipping"
+                    android:inputType="text"
+                    android:padding="16dp" />
+
+                <EditText
+                    android:id="@+id/comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="14sp"
+                    android:background="@drawable/shape_background"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="Commentaire"
+                    android:inputType="text"
+                    android:minHeight="160dp"
+                    android:padding="16dp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14sp"
+            android:layout_marginEnd="14sp"
+            android:gravity="right"
+            android:text="Total Price"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Confirm_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14sp"
+            android:layout_marginTop="14sp"
+            android:layout_marginEnd="14sp"
+            android:background="#9C27B0"
+            android:text="Confirm Order"
+            android:textColor="#fff" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:progressTint="#9C27B0"
+            android:visibility="gone" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,21 @@
         android:theme="@style/Theme.Infinity"
         tools:targetApi="31">
         <activity
+            android:name=".user.ConfirmOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Splashscreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".user.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.adminmodifyproduct"
             android:exported="false" />
         <activity
@@ -25,23 +40,17 @@
             android:name=".admin.admin"
             android:exported="false" />
         <activity
-            android:name=".forgetpassword"
+            android:name=".user.forgetpassword"
             android:exported="false" />
         <activity
-            android:name=".home"
+            android:name=".user.home"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".user.login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".user.SignupActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

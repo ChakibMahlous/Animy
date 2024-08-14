@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.infinity.R
+import com.example.infinity.Utils.Utils
 import com.example.infinity.databinding.AddproductBinding
 import com.example.infinity.databinding.AdminBinding
 import com.example.infinity.model.Product
@@ -57,7 +58,7 @@ class addproduct : AppCompatActivity() {
 
         }
        binding.selectimg.setOnClickListener{
-           opengallery(resultlauncher)
+           Utils.opengallery(resultlauncher)
            binding.txtselectimg.visibility = View.GONE
        }
 
@@ -102,13 +103,6 @@ class addproduct : AppCompatActivity() {
             })
             dialog.show()
         }
-    }
-    fun opengallery(launcher: ActivityResultLauncher<Intent>){
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "image/*"
-        }
-        launcher.launch(intent)
     }
 
     fun uploadpicturetostorage(productId: String) {

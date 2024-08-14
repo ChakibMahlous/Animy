@@ -5,67 +5,53 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    <ScrollView
+    tools:context=".user.SignupActivity">
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    </FrameLayout>
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="531dp"
-                app:srcCompat="@drawable/animinom" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <ImageView
+            android:id="@+id/fraghome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home" />
 
-            <TextView
-                android:id="@+id/welcom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14sp"
-                android:gravity="center"
-                android:text="welcom"
-                android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/fragbuy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_shope" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14sp"
-                android:layout_marginTop="14sp"
-                android:layout_marginEnd="14sp"
-                android:background="#9025AB"
-                android:text="LOGOUT"
-                android:textColor="@color/white" />
+        <ImageView
+            android:id="@+id/fraglivraison"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_livraison" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/goadmin1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14sp"
-                android:layout_marginTop="14sp"
-                android:layout_marginEnd="14sp"
-                android:background="#9025AB"
-                android:text="Admin"
-                android:textColor="@color/white" />
+        <ImageView
+            android:id="@+id/fraguser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_user" />
+    </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/gouser1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14sp"
-                android:layout_marginTop="14sp"
-                android:layout_marginEnd="14sp"
-                android:background="#9025AB"
-                android:text="User"
-                android:textColor="@color/white" />
-
-
-
-        </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
