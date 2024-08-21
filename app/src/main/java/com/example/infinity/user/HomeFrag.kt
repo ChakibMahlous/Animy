@@ -23,65 +23,96 @@ import com.squareup.picasso.Picasso
 
 class HomeFrag : Fragment() {
 
-    lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var allProducts: ArrayList<Product>  // List to hold all products
+    private var currentSelectedCard: View? = null  // Keep track of the currently selected card
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
-        Utils.productref.addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val data = ArrayList<Product>()
-                val productchildren = snapshot.children
-                productchildren.forEach { productChild ->
-                    data.add(productChild.getValue<Product>()!!)
 
+        // Load all products initially
+        loadProducts()
 
-                }
-                val adapter = UserProductAdapter(requireContext(),data)
-                binding.productrecyclerview.adapter = adapter
-                val layoutManager = LinearLayoutManager(requireContext())
-                binding.productrecyclerview.layoutManager = layoutManager
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-
-        })
-        binding.hellouser.text = "Welcome ${Utils.USER!!.name}"
-        if (Utils.USER!!.prfilepic!= null){
-            if  (Utils.USER!!.prfilepic!!.isNotEmpty()){
-                Picasso.get().load(Utils.USER!!.prfilepic!!).into(binding.user)
+        // Set up user info
+        binding.hellouser.text = "Welcome ${Utils.USER?.name}"
+        Utils.USER?.prfilepic?.let {
+            if (it.isNotEmpty()) {
+                Picasso.get().load(it).into(binding.user)
             }
         }
 
-
-
-
-
-
+        // Set up category filters
+        setupCategoryFilters()
 
         return view
     }
-    //fun liredata(){
-       // val database = Firebase.database
-      //  val UserID = Firebase.auth.currentUser!!.uid
-       // val myRef = database.getReference("Users").child(UserID).child("name")
-       // myRef.addValueEventListener(object : ValueEventListener {
-           // override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-               // val username = dataSnapshot.getValue<String>()
-               // binding.hellouser.text = "Hello ${username}"
-            //!!.split("")[0]}"//hdi bch t9ra 1er element brk
+    private fun loadProducts() {
+        Utils.productref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                allProducts = ArrayList()
+                snapshot.children.forEach { productChild ->
+                    val product = productChild.getValue<Product>()
+                    product?.let { allProducts.add(it) }
+                }
+                // Show all products initially
+                updateRecyclerView(allProducts)
             }
 
-           // override fun onCancelled(error: DatabaseError) {
+            override fun onCancelled(error: DatabaseError) {
+                // Handle database error
+            }
+        })
+    }
 
-          //  }
-       // })
-   // }
+    private fun updateRecyclerView(productList: List<Product>) {
+        val adapter = UserProductAdapter(requireContext(), ArrayList(productList))
+        binding.productrecyclerview.adapter = adapter
+        binding.productrecyclerview.layoutManager = LinearLayoutManager(requireContext())
+    }
 
-//}
+    private fun setupCategoryFilters() {
+        binding.PosterCard.setOnClickListener {
+            filterProductsByCategory("Poster", binding.PosterCard)
+        }
+        binding.FigurineCard.setOnClickListener {
+            filterProductsByCategory("Figurine", binding.FigurineCard)
+        }
+        binding.ClothesCard.setOnClickListener {
+            filterProductsByCategory("Clothes", binding.ClothesCard)
+        }
+        binding.EventCard.setOnClickListener {
+            filterProductsByCategory("Event", binding.EventCard)
+        }
+        binding.OutilsCard.setOnClickListener {
+            filterProductsByCategory("Outils", binding.OutilsCard)
+        }
+        binding.OthersCard.setOnClickListener {
+            filterProductsByCategory("Others", binding.OthersCard)
+        }
+    }
+
+    private fun filterProductsByCategory(category: String, selectedCard: View) {
+        // Update the selected filter UI
+        highlightSelectedFilter(selectedCard)
+
+        // Filter products based on the category
+        val filteredProducts = allProducts.filter { it.type == category }
+        updateRecyclerView(filteredProducts)
+    }
+
+    private fun highlightSelectedFilter(selectedCard: View) {
+        // Reset the background of the previously selected card
+        currentSelectedCard?.setBackgroundResource(R.drawable.default_card_backgroung)
+
+        // Highlight the selected card
+        selectedCard.setBackgroundResource(R.drawable.selected_card_background)
+
+        // Update the current selected card
+        currentSelectedCard = selectedCard
+    }
+}

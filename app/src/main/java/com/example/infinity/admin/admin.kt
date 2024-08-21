@@ -3,12 +3,17 @@ package com.example.infinity.admin
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.R
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.infinity.adapter.ProductAdapter
 import com.example.infinity.databinding.AdminBinding
 import com.example.infinity.model.Product
+import com.example.infinity.user.AcountFrag
+import com.example.infinity.user.CartFrag
+import com.example.infinity.user.HomeFrag
+import com.example.infinity.user.OrdersFrag
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
@@ -35,40 +40,35 @@ class admin : AppCompatActivity() {
         productref = Firebase.database.getReference("product")
         auth = Firebase.auth
 
-        binding.plus.setOnClickListener {
-            val i=Intent(this@admin,addproduct::class.java)
-            startActivity(i)
+        supportFragmentManager.beginTransaction().replace(com.example.infinity.R.id.fragment_container, AdminProductsFragment()).commit()
 
-        }
-        binding.productslist.layoutManager = LinearLayoutManager(this)
-
-        productref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                val dataSnapshot = dataSnapshot.children
-                val products = ArrayList<Product>()
-                dataSnapshot.forEach { product ->
-                    products.add(product.getValue<Product>()!!)
-
+        binding.adminBottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                com.example.infinity.R.id.navigation_listadmin -> {
+                    supportFragmentManager.beginTransaction().replace(com.example.infinity.R.id.fragment_container, AdminProductsFragment()).commit()
+                    true
                 }
-                binding.progressBar3.visibility = View.GONE
-                binding.productslist.adapter = ProductAdapter(this@admin,products)
+                com.example.infinity.R.id.navigation_livraisonadmin -> {
+                    supportFragmentManager.beginTransaction().replace(com.example.infinity.R.id.fragment_container, AdminOrdersFrag()).commit()
+                    true
+                }
+                com.example.infinity.R.id.navigation_useradmin -> {
+                    supportFragmentManager.beginTransaction().replace(com.example.infinity.R.id.fragment_container, AcountFrag()).commit()
+                    true
+                }
+                else -> false
             }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
-
-
-
-
-
-
-
-
-
-
-
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
 }

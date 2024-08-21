@@ -7,6 +7,8 @@ data class Product(
     var type : String,
     val id : String,
     var prdctimg : String?,
+    val category: String = ""  // Add this field if it's not already present
+
 ){
-    constructor() : this("","","","","","")
+    constructor() : this("","","","","","","")
 }

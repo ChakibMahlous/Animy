@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Home tab -->
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <!-- Buy tab -->
+    <item
+        android:id="@+id/navigation_buy"
+        android:icon="@drawable/ic_shope"
+        android:title="Buy" />
+
+    <!-- Delivery tab -->
+    <item
+        android:id="@+id/navigation_livraison"
+        android:icon="@drawable/ic_livraison"
+        android:title="Delivery" />
+
+    <!-- Account tab -->
+    <item
+        android:id="@+id/navigation_user"
+        android:icon="@drawable/ic_user"
+        android:title="Account" />
+</menu>

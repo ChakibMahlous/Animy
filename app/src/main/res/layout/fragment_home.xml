@@ -79,10 +79,12 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/PosterCard"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14sp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/default_card_backgroung">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -107,10 +109,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/FigurineCard"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14sp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/default_card_backgroung">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -136,10 +140,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/ClothesCard"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14sp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/default_card_backgroung">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -165,10 +171,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/EventCard"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14sp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/default_card_backgroung">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -193,10 +201,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/OutilsCard"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14sp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/default_card_backgroung">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -221,11 +231,13 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/OthersCard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14sp"
                     android:layout_marginEnd="14sp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/default_card_backgroung">
 
                     <LinearLayout
                         android:layout_width="wrap_content"

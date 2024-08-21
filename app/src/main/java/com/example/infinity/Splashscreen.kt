@@ -3,12 +3,15 @@ package com.example.infinity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.infinity.Utils.Utils
+import com.example.infinity.admin.admin
 import com.example.infinity.model.User
 import com.example.infinity.user.SignupActivity
 import com.example.infinity.user.home
@@ -23,67 +26,108 @@ import com.google.firebase.database.getValue
 
 class Splashscreen : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-
-
+    private lateinit var videoView: VideoView
+    private lateinit var passButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_splashscreen)
-        val videoView = findViewById<VideoView>(R.id.videoView!!)
-        val packageName = "android.resource://" + getPackageName() + "/" + R.raw.animmy
-        val uri = Uri.parse(packageName)
-        videoView.setVideoURI(uri)
-        videoView.start()
-        auth  = Firebase.auth
+
+        videoView = findViewById(R.id.videoView)
+        passButton = findViewById(R.id.skipButton)
+
+        playFirstVideo()
+
+        auth = Firebase.auth
     }
 
-    public override fun onStart() {
-        auth = FirebaseAuth.getInstance()
+    private fun playFirstVideo() {
+        val uri1 = Uri.parse("android.resource://${packageName}/${R.raw.animmy}")
+        videoView.setVideoURI(uri1)
+        videoView.start()
 
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            liredata()
-        }else{
-            val thread = object : Thread(){
-                override fun run() {
-                    try {
-                        sleep(2000)
-                    }catch (e:Exception){
-                        e.printStackTrace()
-                    }finally {
-                        val i= Intent(this@Splashscreen,SignupActivity::class.java)
-                        startActivity(i)
-                        finish()
-                    }
-                }
-            }
-            thread.start()
+        videoView.setOnCompletionListener {
+            playSecondVideo()
         }
     }
 
-    fun gohome(){
-        val i= Intent(this@Splashscreen, home::class.java)
-        startActivity(i)
+    private fun playSecondVideo() {
+        val uri2 = Uri.parse("android.resource://${packageName}/${R.raw.videoanimy}")  // Replace with your second video resource
+        videoView.setVideoURI(uri2)
+        videoView.start()
+
+        // Show the "Pass" button during the second video
+        passButton.visibility = View.VISIBLE
+
+        passButton.setOnClickListener {
+            videoView.stopPlayback()  // Stop the second video
+            proceedAfterVideo()       // Proceed with the app flow
+        }
+
+        videoView.setOnCompletionListener {
+            // Hide the "Pass" button when the video finishes
+            passButton.visibility = View.GONE
+            proceedAfterVideo()
+        }
+    }
+
+    private fun proceedAfterVideo() {
+        checkUserAuthStatus()
+    }
+
+    private fun checkUserAuthStatus() {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            liredata()
+        } else {
+            navigateToSignup()
+        }
+    }
+
+    private fun navigateToSignup() {
+        val intent = Intent(this@Splashscreen, SignupActivity::class.java)
+        startActivity(intent)
         finish()
     }
-    fun liredata(){
+
+    private fun gohome() {
+        val intent = Intent(this@Splashscreen, home::class.java)
+        startActivity(intent)
+        finish()
+    }
+    fun goAdmin(){
+        val i=Intent(this@Splashscreen, admin::class.java)
+        startActivity(i)
+
+    }
+
+
+    private fun liredata() {
         val database = Firebase.database
-        val UserID = Firebase.auth.currentUser!!.uid
-        val myRef = database.getReference("Users").child(UserID)
+        val userID = Firebase.auth.currentUser!!.uid
+        val myRef = database.getReference("Users").child(userID)
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Utils.USER = dataSnapshot.getValue<User>()
+                if(Utils.USER!!.admin!=null){
+                    if (Utils.USER!!.admin!!){
+                        goAdmin()
+                    }else{
+                        gohome()
 
-                 Utils.USER = dataSnapshot.getValue<User>()
-                gohome()
+                    }
+                }else{
+                    gohome()
+                }
+
             }
 
-            override fun onCancelled(error: DatabaseError) {
 
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
             }
         })
     }
-
+    
 }

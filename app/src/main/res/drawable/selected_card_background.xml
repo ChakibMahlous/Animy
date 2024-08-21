@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#649C27B0"/> <!-- Highlight color for selected card -->
+    <corners android:radius="8dp"/> <!-- Rounded corners -->
+    <stroke android:width="2dp" android:color="#649C27B0"/> <!-- Border for selected card -->
+</shape>

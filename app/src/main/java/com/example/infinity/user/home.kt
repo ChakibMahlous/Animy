@@ -21,59 +21,58 @@ class home : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(this)
 
-        super.onCreate(savedInstanceState)
         binding = HomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         auth = Firebase.auth
-    //binding.logout.setOnClickListener{  Firebase.auth.signOut() gosignup() }
-        val frags = ArrayList<Fragment>()
-        frags.add(HomeFrag())
-        frags.add(CartFrag())
-        frags.add(OrdersFrag())
-        frags.add(AcountFrag())
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container,frags[0]).commit()
+        // Set up initial fragment
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFrag()).commit()
 
-        binding.fraghome.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,frags[0]).commit()
+        // Set up BottomNavigationView
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFrag()).commit()
+                    true
+                }
+                R.id.navigation_buy -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, CartFrag()).commit()
+                    true
+                }
+                R.id.navigation_livraison -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, OrdersFrag()).commit()
+                    true
+                }
+                R.id.navigation_user -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, AcountFrag()).commit()
+                    true
+                }
+                else -> false
+            }
         }
-        binding.fragbuy.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,frags[1]).commit()
-        }
-        binding.fraglivraison.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,frags[2]).commit()
-        }
-        binding.fraguser.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,frags[3]).commit()
-        }
-
-
-
-
-
-
-
     }
-    fun gosignup(){
-        val i=Intent(this@home, SignupActivity::class.java)
+
+    private fun goSignup() {
+        val i = Intent(this@home, SignupActivity::class.java)
         startActivity(i)
     }
-    fun liredata(){
+
+    private fun readUserData() {
         val database = Firebase.database
-        val UserID = auth.currentUser!!.uid
-        val myRef = database.getReference("Users").child(UserID).child("name")
+        val userID = auth.currentUser!!.uid
+        val myRef = database.getReference("Users").child(userID).child("name")
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-
                 val username = dataSnapshot.getValue<String>()
-               // binding.welcom.text = "welcome $username"
+                // binding.welcom.text = "welcome $username"
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                // Handle error
             }
         })
     }

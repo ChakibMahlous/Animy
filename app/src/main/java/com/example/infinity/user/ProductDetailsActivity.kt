@@ -61,8 +61,19 @@ class ProductDetailsActivity : AppCompatActivity() {
 
                 }
         }
+       // binding.Purchase3.setOnClickListener {
 
-
-
+         //   if (::PRODUCT.isInitialized) {
+              //  startActivity(Intent(this, ConfirmOrderActivity::class.java)
+                //    .putExtra("total_price", binding.productprice3.text.toString()))
+           // } else {
+              //  Toast.makeText(this, "Add products first", Toast.LENGTH_SHORT).show()
+            //}
+        //}
     }
 }
+
+
+
+
+

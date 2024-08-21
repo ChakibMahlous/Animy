@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminOrdersFrag">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonwaiting"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="14sp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_background"
+                android:text="WAITING"
+                android:textColor="#000" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonShipped"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="14sp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_background"
+                android:text="Shipped" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonFinished"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="14sp"
+                android:layout_marginEnd="14sp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_background"
+                android:text="Finished" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/orderAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="14sp"
+            android:layout_marginEnd="14sp" />
+    </LinearLayout>
+</FrameLayout>

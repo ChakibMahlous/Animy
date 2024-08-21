@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,119 +20,130 @@ import com.google.firebase.auth.auth
 
 class ConfirmOrderActivity : AppCompatActivity() {
     lateinit var binding: ActivityConfirmOrderBinding
-    lateinit var TOTAL_PRICE : String
-    lateinit var wilayas :Array<String>
+    lateinit var TOTAL_PRICE: String
+    lateinit var wilayas: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmOrderBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        TOTAL_PRICE = intent!!.extras!!.getString("total_price")!!
+        setContentView(binding.root)
+
+        // Safely get the total price from the intent
+        TOTAL_PRICE = intent?.extras?.getString("total_price") ?: ""
+        if (TOTAL_PRICE.isEmpty()) {
+            // Handle the case where total price is not passed or is empty
+            Toast.makeText(this, "Total price is missing", Toast.LENGTH_SHORT).show()
+            finish() // End the activity as it cannot proceed without the total price
+            return
+        }
+
         binding.totalPrice.text = TOTAL_PRICE
-        binding.nameInput.setText(Utils.USER!!.name)
-        binding.phoneInput.setText(Utils.USER!!.phone)
+
+        // Safely access Utils.USER
+        Utils.USER?.let { user ->
+            binding.nameInput.setText(user.name)
+            binding.phoneInput.setText(user.phone)
+        } ?: run {
+            // Handle the case where USER is null
+            Toast.makeText(this, "User information is missing", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
 
         initWilayas()
-        binding.back4.setOnClickListener{
-            startActivity(Intent(this@ConfirmOrderActivity,home::class.java))
+
+        binding.back4.setOnClickListener {
+            startActivity(Intent(this@ConfirmOrderActivity, home::class.java))
             finish()
         }
 
-        binding.wilaya.setOnClickListener{
+        binding.wilaya.setOnClickListener {
             val dialog = AlertDialog.Builder(this)
             dialog.setTitle("Select your City")
-            dialog.setSingleChoiceItems(wilayas,-1,DialogInterface.OnClickListener { dialogInterface, i ->
+            dialog.setSingleChoiceItems(wilayas, -1) { dialogInterface, i ->
                 binding.wilaya.text = wilayas[i]
                 dialogInterface.dismiss()
-            })
+            }
             dialog.show()
         }
+
         binding.shippingType.setOnClickListener {
-            val shippingTypes = arrayOf("Stop desk","A domicile")
+            val shippingTypes = arrayOf("Stop desk", "A domicile")
             val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("Select your City")
-            dialog.setSingleChoiceItems(shippingTypes,-1,DialogInterface.OnClickListener { dialogInterface, i ->
+            dialog.setTitle("Select your Shipping Type")
+            dialog.setSingleChoiceItems(shippingTypes, -1) { dialogInterface, i ->
                 binding.shippingType.text = shippingTypes[i]
                 dialogInterface.dismiss()
-            })
+            }
             dialog.show()
         }
+
         binding.ConfirmOrder.setOnClickListener {
             confirmOrder()
         }
-
-
-
-
     }
-    fun initWilayas(){
-         wilayas = arrayOf(
-            "Adrar","Chlef","Laghouat","Oum el Bouaghi","Batna","Bejaia","Biskra","Bechar","Blida","Bouira",
-            "Tamanrasset","Tbessa","Tlemcen","Tiaret","Tizi ouezzo","Alger","Djelfa","Djijel","Setif","Saida",
-            "Sidi bel abbes","Annaba","Guelma","Constantine","Medea","Mostaganem","Mssila","Mascara","Ouergla",
+
+    private fun initWilayas() {
+        wilayas = arrayOf(
+            "Adrar", "Chlef", "Laghouat", "Oum el Bouaghi", "Batna", "Bejaia", "Biskra", "Bechar", "Blida", "Bouira",
+            "Tamanrasset", "Tbessa", "Tlemcen", "Tiaret", "Tizi ouezzo", "Alger", "Djelfa", "Djijel", "Setif", "Saida",
+            "Sidi bel abbes", "Annaba", "Guelma", "Constantine", "Medea", "Mostaganem", "Mssila", "Mascara", "Ouergla"
         )
     }
-    //@SuppressLint("SuspiciousIndentation")
-    fun confirmOrder(){
+
+    private fun confirmOrder() {
         binding.progressbar.visibility = View.VISIBLE
         binding.ConfirmOrder.visibility = View.GONE
-     val orderRef = Utils.orderRef.push()
-     val orderID = orderRef.key
-     val order = Order(//hna dir if is nof empty bch matdich comande vide
-         binding.nameInput.text.toString(),
-         binding.phoneInput.text.toString(),
-         binding.wilaya.text.toString(),
-         binding.commune.text.toString(),
-         binding.Adress.text.toString(),
-         binding.shippingType.text.toString(),
-         binding.comment.text.toString(),
-         Firebase.auth.currentUser!!.uid,
-         CartFrag.PRODUCTS,
-         binding.totalPrice.text.toString(),
-         "waiting",
-                 orderID!!,
-     )
+
+        // Check if CartFrag.PRODUCTS is not null or empty
+        if (CartFrag.PRODUCTS.isNullOrEmpty()) {
+            Toast.makeText(this, "No products in the cart", Toast.LENGTH_SHORT).show()
+            binding.progressbar.visibility = View.GONE
+            binding.ConfirmOrder.visibility = View.VISIBLE
+            return
+        }
+
+        val orderRef = Utils.orderRef.push()
+        val orderID = orderRef.key ?: ""
+
+        val order = Order(
+            binding.nameInput.text.toString(),
+            binding.phoneInput.text.toString(),
+            binding.wilaya.text.toString(),
+            binding.commune.text.toString(),
+            binding.Adress.text.toString(),
+            binding.shippingType.text.toString(),
+            binding.comment.text.toString(),
+            Firebase.auth.currentUser!!.uid,
+            CartFrag.PRODUCTS,
+            binding.totalPrice.text.toString(),
+            "waiting",
+            orderID
+        )
+
         orderRef.setValue(order).addOnCompleteListener { task ->
-            if (task.isSuccessful){
-                Utils.cartref.removeValue().addOnCompleteListener { task->
-                    if (task.isSuccessful){
-                        binding.ConfirmOrder.visibility = View.VISIBLE
+            if (task.isSuccessful) {
+                Utils.cartref.removeValue().addOnCompleteListener { task ->
+                    binding.progressbar.visibility = View.GONE
+                    binding.ConfirmOrder.visibility = View.VISIBLE
 
-                        binding.progressbar.visibility = View.GONE
-                        binding.ConfirmOrder.setOnClickListener {
-                            val dialog = AlertDialog.Builder(this)
-                            dialog.setTitle("Order received !")
-                            dialog.setMessage("Thank you for your order, we will back to you soon ")
-                            dialog.setPositiveButton("ok",DialogInterface.OnClickListener { dialogInterface, i ->
-                                startActivity(Intent(this@ConfirmOrderActivity,home::class.java))
-                                finish()
-                            })
-                            dialog.show()
-
-                        }
-
+                    if (task.isSuccessful) {
                         val dialog = AlertDialog.Builder(this)
-                        dialog.setTitle("Order received !")
-                        dialog.setMessage("Thank you for your order, we will back to you soon ")
-                        dialog.setPositiveButton("ok",DialogInterface.OnClickListener { dialogInterface, i ->
-                            startActivity(Intent(this@ConfirmOrderActivity,home::class.java))
+                        dialog.setTitle("Order received!")
+                        dialog.setMessage("Thank you for your order, we will get back to you soon.")
+                        dialog.setPositiveButton("OK") { _, _ ->
+                            startActivity(Intent(this@ConfirmOrderActivity, home::class.java))
                             finish()
-                        })
+                        }
                         dialog.show()
-                    }else{
-                        binding.progressbar.visibility = View.GONE
-
+                    } else {
+                        Toast.makeText(this, "Failed to clear cart: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
-
                 }
-            }else{
+            } else {
                 binding.progressbar.visibility = View.GONE
-
-
+                Toast.makeText(this, "Order failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
-
 }

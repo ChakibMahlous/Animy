@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Home tab -->
+    <item
+        android:id="@+id/navigation_listadmin"
+        android:icon="@drawable/ic_list"
+        android:title="List" />
+
+
+    <!-- Delivery tab -->
+    <item
+        android:id="@+id/navigation_livraisonadmin"
+        android:icon="@drawable/ic_livraison"
+        android:title="Delivery" />
+
+    <!-- Account tab -->
+    <item
+        android:id="@+id/navigation_useradmin"
+        android:icon="@drawable/ic_user"
+        android:title="Account" />
+</menu>

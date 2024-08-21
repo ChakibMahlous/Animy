@@ -69,6 +69,11 @@ class login : AppCompatActivity() {
         val i=Intent(this@login,home::class.java)
         startActivity(i)
     }
+    fun goAdmin(){
+        val i=Intent(this@login,admin::class.java)
+        startActivity(i)
+
+    }
     fun gochangeit(){
         val i=Intent(this@login, forgetpassword::class.java)
         startActivity(i)
@@ -81,7 +86,17 @@ class login : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 Utils.USER = dataSnapshot.getValue<User>()
-                gohome()
+                if(Utils.USER!!.admin!=null){
+                    if (Utils.USER!!.admin!!){
+                        goAdmin()
+                    }else{
+                        gohome()
+
+                    }
+                }else{
+                    gohome()
+                }
+
             }
 
             override fun onCancelled(error: DatabaseError) {

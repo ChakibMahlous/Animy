@@ -81,7 +81,8 @@ class SignupActivity : AppCompatActivity() {
         val UserID = auth.currentUser!!.uid
         val myRef = database.getReference("Users").child(UserID)
         val user = User(binding.name.text.toString(),binding.phone.text.toString(),binding.email.text.toString(),
-        null)
+        null,false)
+
         myRef.setValue(user)
 
 

@@ -4,7 +4,8 @@ data class User(
     val name : String,
     val phone: String,
     val email: String,
-    var prfilepic : String?
+    var prfilepic : String?,
+    val admin : Boolean?
 ){
-    constructor(): this("","","","")
+    constructor(): this("","","","",null)
 }
