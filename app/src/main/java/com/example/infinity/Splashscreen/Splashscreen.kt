@@ -1,4 +1,4 @@
-package com.example.infinity
+package com.example.infinity.Splashscreen
 
 import android.content.Intent
 import android.net.Uri
@@ -8,8 +8,7 @@ import android.widget.Button
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.infinity.R
 import com.example.infinity.Utils.Utils
 import com.example.infinity.admin.admin
 import com.example.infinity.model.User
@@ -43,7 +42,7 @@ class Splashscreen : AppCompatActivity() {
     }
 
     private fun playFirstVideo() {
-        val uri1 = Uri.parse("android.resource://${packageName}/${R.raw.animmy}")
+        val uri1 = Uri.parse("android.resource://${packageName}/${R.raw.animylogoanimation}")
         videoView.setVideoURI(uri1)
         videoView.start()
 

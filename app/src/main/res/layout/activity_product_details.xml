@@ -68,8 +68,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="218dp"
-                android:layout_height="103dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -84,7 +84,7 @@
 
                 <TextView
                     android:id="@+id/productnam3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14sp"
                     android:layout_marginTop="14sp"
@@ -122,6 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="14sp"
+                    android:layout_marginTop="24sp"
                     android:text="bnHBJBHQHBIQHBHQIHBIQHBIHQIBHIQHBIHQIBHIQUHBIUHQIUBHIUQHBIUQHBIUHQIUBHIQBHIQHBIHQHIQIHBQIHHBIQBIHHQIQIBNIQHVBIBHQIBQIHHBHIQBNIQBIBQIQIBbnHBJBHQHBIQHBHQIHBIQHBIHQIBHIQHBIHQIBHIQUHBIUHQIUBHIUQHBIUQHBIUHQIUBHIQBHIQHBIHQHIQIHBQIHHBIQBIHHQIQIBNIQHVBIBHQIBQIHHBHIQBNIQBIBQIQIBbnHBJBHQHBIQHBHQIHBIQHBIHQIBHIQHBIHQIBHIQUHBIUHQIUBHIUQHBIUQHBIUHQIUBHIQBHIQHBIHQHIQIHBQIHHBIQBIHHQIQIBNIQHVBIBHQIBQIHHBHIQBNIQBIBQIQIBbnHBJBHQHBIQHBHQIHBIQHBIHQIBHIQHBIHQIBHIQUHBIUHQIUBHIUQHBIUQHBIUHQIUBHIQBHIQHBIHQHIQIHBQIHHBIQBIHHQIQIBNIQHVBIBHQIBQIHHBHIQBNIQBIBQIQIBbnHBJBHQHBIQHBHQIHBIQHBIHQIBHIQHBIHQIBHIQUHBIUHQIUBHIUQHBIUQHBIUHQIUBHIQBHIQHBIHQHIQIHBQIHHBIQBIHHQIQIBNIQHVBIBHQIBQIHHBHIQBNIQBIBQIQIBbnHBJBHQHBIQHBHQIHBIQHBIHQIBHIQHBIHQIBHIQUHBIUHQIUBHIUQHBIUQHBIUHQIUBHIQBHIQHBIHQHIQIHBQIHHBIQBIHHQIQIBNIQHVBIBHQIBQIHHBHIQBNIQBIBQIQIBbnHBJBHQHBIQHBHQIHBIQHBIHQIBHIQHBIHQIBHIQUHBIUHQIUBHIUQHBIUQHBIUHQIUBHIQBHIQHBIHQHIQIHBQIHHBIQBIHHQIQIBNIQHVBIBHQIBQIHHBHIQBNIQBIBQIQIB" />
             </LinearLayout>
         </ScrollView>
@@ -156,16 +157,6 @@
                 android:text="Add to card"
                 android:textColor="#9C27B0" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/Purchase3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14sp"
-                android:layout_marginEnd="14sp"
-                android:layout_weight="1"
-                android:background="#9C27B0"
-                android:text="Purchase"
-                android:textColor="#fff" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,10 +16,16 @@
         android:theme="@style/Theme.Infinity"
         tools:targetApi="31">
         <activity
+            android:name=".admin.addnews"
+            android:exported="false" />
+        <activity
+            android:name=".user.AnimyNews"
+            android:exported="false" />
+        <activity
             android:name=".user.ConfirmOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".Splashscreen"
+            android:name=".Splashscreen.Splashscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +56,7 @@
             android:exported="false" />
         <activity
             android:name=".user.SignupActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

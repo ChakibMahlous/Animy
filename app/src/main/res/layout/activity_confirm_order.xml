@@ -7,154 +7,160 @@
     android:layout_height="match_parent"
     tools:context=".user.ConfirmOrderActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="764dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/back4"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="24sp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|left"
-                android:layout_weight="1"
-                android:text="Confirm Order"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="700dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/back4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="40dp"
+                android:layout_marginTop="24sp"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/name_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14sp"
-                    android:layout_marginTop="14sp"
-                    android:layout_marginEnd="14sp"
-                    android:background="@drawable/shape_background"
-                    android:ems="10"
-                    android:hint="Full Name"
-                    android:inputType="text"
-                    android:padding="16dp" />
-
-                <EditText
-                    android:id="@+id/phone_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14sp"
-                    android:layout_marginTop="14sp"
-                    android:layout_marginEnd="14sp"
-                    android:background="@drawable/shape_background"
-                    android:ems="10"
-                    android:hint="Phone Number"
-                    android:inputType="text"
-                    android:padding="16dp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
 
                 <TextView
-                    android:id="@+id/wilaya"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14sp"
-                    android:layout_marginTop="14sp"
-                    android:layout_marginEnd="14sp"
-                    android:background="@drawable/shape_background"
-                    android:ems="10"
-                    android:hint="Wilaya"
-                    android:inputType="text"
-                    android:padding="14dp"
-                    android:textSize="24sp" />
-
-                <EditText
-                    android:id="@+id/commune"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14sp"
-                    android:layout_marginTop="14sp"
-                    android:layout_marginEnd="14sp"
-                    android:background="@drawable/shape_background"
-                    android:ems="10"
-                    android:hint="Commune"
-                    android:inputType="text"
-                    android:padding="16dp" />
-
-                <EditText
-                    android:id="@+id/Adress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14sp"
-                    android:layout_marginTop="14sp"
-                    android:layout_marginEnd="14sp"
-                    android:background="@drawable/shape_background"
-                    android:ems="10"
-                    android:hint="Adress"
-                    android:inputType="text"
-                    android:padding="16dp" />
+                    android:layout_gravity="center|left"
+                    android:layout_weight="1"
+                    android:text="Confirm Order"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/shipping_type"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14sp"
-                    android:layout_marginTop="14sp"
-                    android:layout_marginEnd="14sp"
-                    android:background="@drawable/shape_background"
-                    android:ems="10"
-                    android:hint="Type Of Shipping"
-                    android:inputType="text"
-                    android:padding="16dp" />
+                    android:layout_weight="1" />
 
-                <EditText
-                    android:id="@+id/comment"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="14sp"
-                    android:background="@drawable/shape_background"
-                    android:ems="10"
-                    android:gravity="top"
-                    android:hint="Commentaire"
-                    android:inputType="text"
-                    android:minHeight="160dp"
-                    android:padding="16dp" />
+                    android:layout_weight="1" />
+
             </LinearLayout>
-        </ScrollView>
 
-    </LinearLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/name_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14sp"
+                        android:layout_marginTop="14sp"
+                        android:layout_marginEnd="14sp"
+                        android:background="@drawable/shape_background"
+                        android:ems="10"
+                        android:hint="Full Name"
+                        android:inputType="text"
+                        android:padding="16dp" />
+
+                    <EditText
+                        android:id="@+id/phone_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14sp"
+                        android:layout_marginTop="14sp"
+                        android:layout_marginEnd="14sp"
+                        android:background="@drawable/shape_background"
+                        android:ems="10"
+                        android:hint="Phone Number"
+                        android:inputType="text"
+                        android:padding="16dp" />
+
+                    <TextView
+                        android:id="@+id/wilaya"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14sp"
+                        android:layout_marginTop="14sp"
+                        android:layout_marginEnd="14sp"
+                        android:background="@drawable/shape_background"
+                        android:ems="10"
+                        android:hint="Wilaya"
+                        android:inputType="text"
+                        android:padding="14dp"
+                        android:textSize="24sp" />
+
+                    <EditText
+                        android:id="@+id/commune"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14sp"
+                        android:layout_marginTop="14sp"
+                        android:layout_marginEnd="14sp"
+                        android:background="@drawable/shape_background"
+                        android:ems="10"
+                        android:hint="Commune"
+                        android:inputType="text"
+                        android:padding="16dp" />
+
+                    <EditText
+                        android:id="@+id/Adress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14sp"
+                        android:layout_marginTop="14sp"
+                        android:layout_marginEnd="14sp"
+                        android:background="@drawable/shape_background"
+                        android:ems="10"
+                        android:hint="Adress"
+                        android:inputType="text"
+                        android:padding="16dp" />
+
+                    <TextView
+                        android:id="@+id/shipping_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14sp"
+                        android:layout_marginTop="14sp"
+                        android:layout_marginEnd="14sp"
+                        android:background="@drawable/shape_background"
+                        android:ems="10"
+                        android:hint="Type Of Shipping"
+                        android:inputType="text"
+                        android:padding="16dp" />
+
+                    <EditText
+                        android:id="@+id/comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="14sp"
+                        android:background="@drawable/shape_background"
+                        android:ems="10"
+                        android:gravity="top"
+                        android:hint="Commentaire"
+                        android:inputType="text"
+                        android:minHeight="160dp"
+                        android:padding="16dp" />
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="125dp"
         android:background="#fff"

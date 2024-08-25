@@ -11,6 +11,8 @@ import com.google.firebase.database.database
 object Utils {
     val database = Firebase.database
     val productref = Firebase.database.getReference("product")
+    val newsref = Firebase.database.getReference("news")
+
     val userRef = database.getReference("Users")
     val cartref = database.getReference("Cart").child(Firebase.auth.currentUser!!.uid)
     val orderRef = Firebase.database.getReference("Orders")

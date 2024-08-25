@@ -1,5 +1,6 @@
 package com.example.infinity.user
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,12 +12,9 @@ import com.example.infinity.Utils.Utils
 import com.example.infinity.adapter.UserProductAdapter
 import com.example.infinity.databinding.FragmentHomeBinding
 import com.example.infinity.model.Product
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 import com.squareup.picasso.Picasso
 
@@ -43,6 +41,11 @@ class HomeFrag : Fragment() {
             if (it.isNotEmpty()) {
                 Picasso.get().load(it).into(binding.user)
             }
+        }
+        binding.notif.setOnClickListener {
+            val i= Intent(requireContext(), AnimyNews::class.java)
+            startActivity(i)
+
         }
 
         // Set up category filters

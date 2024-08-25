@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".admin.addproduct">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="14sp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight="0.5"
+                android:foregroundGravity="right"
+                app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="4"
+                android:gravity="center|left"
+                android:text="Back"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="266dp"
+            android:layout_margin="4sp">
+
+            <ImageView
+                android:id="@+id/selectimg"
+                android:layout_width="match_parent"
+                android:layout_height="244dp"
+                android:layout_margin="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/_stroke_dotted_5dp" />
+
+            <TextView
+                android:id="@+id/txtselectimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="select image"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/selectimg"
+                app:layout_constraintEnd_toEndOf="@+id/selectimg"
+                app:layout_constraintStart_toStartOf="@+id/selectimg"
+                app:layout_constraintTop_toTopOf="@+id/selectimg" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/newsname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14sp"
+            android:layout_marginTop="14sp"
+            android:layout_marginEnd="14sp"
+            android:background="#fff"
+            android:backgroundTint="#fff"
+            android:ems="10"
+            android:hint="News Name"
+            android:inputType="text"
+            android:padding="14sp" />
+
+        <EditText
+            android:id="@+id/newsdescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14sp"
+            android:layout_marginTop="14sp"
+            android:layout_marginEnd="14sp"
+            android:background="#fff"
+            android:backgroundTint="#fff"
+            android:ems="10"
+            android:hint="News Description"
+            android:inputType="text"
+            android:padding="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14sp"
+            android:layout_marginTop="24sp"
+            android:layout_marginEnd="14sp"
+            android:background="#6424D7"
+            android:text="Add News"
+            android:textColor="#fff" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+</LinearLayout>
